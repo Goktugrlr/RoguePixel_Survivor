@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boundaries : MonoBehaviour
+public class CameraBoundary : MonoBehaviour
 {
-    public float minX, maxX, minY, maxY; // Boundary values
+    private Collider2D boundaryCollider;
+
+    void Start()
+    {
+        boundaryCollider = GetComponent<Collider2D>();
+    }
 
     void LateUpdate()
     {
-        Vector3 position = transform.position;
-        position.x = Mathf.Clamp(position.x, minX, maxX);
-        position.y = Mathf.Clamp(position.y, minY, maxY);
-        transform.position = position;
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, boundaryCollider.bounds.min.x, boundaryCollider.bounds.max.x);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, boundaryCollider.bounds.min.y, boundaryCollider.bounds.max.y);
+        transform.position = clampedPosition;
     }
 }
