@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4acc21c2710db5448bd40c6c867bd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   rb: {fileID: 275394147}
 --- !u!212 &275394149
 SpriteRenderer:
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 275394150}
-  followSpeed: 100
+  followSpeed: 1000
   minBoundaries: {x: -24, y: -35}
   maxBoundaries: {x: 24, y: 35}
 --- !u!1 &592048175
@@ -627,8 +627,8 @@ Transform:
   m_GameObject: {fileID: 592048175}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.3, y: 49.5, z: 0}
-  m_LocalScale: {x: 1, y: 99.363, z: 1}
+  m_LocalPosition: {x: 0.4805, y: 49.5, z: 0}
+  m_LocalScale: {x: 1, y: 100.923, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -757,8 +757,8 @@ Transform:
   m_GameObject: {fileID: 707539181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.3, y: -49.4, z: 0}
-  m_LocalScale: {x: 1, y: 99.363, z: 1}
+  m_LocalPosition: {x: 0.3504, y: -49.4, z: 0}
+  m_LocalScale: {x: 1, y: 100.66466, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
