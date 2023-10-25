@@ -378,7 +378,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -456,7 +456,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -500,7 +500,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 275394150}
-  boundaryCollider: {fileID: 0}
+  followSpeed: 100
+  minBoundaries: {x: -24, y: -35}
+  maxBoundaries: {x: 24, y: 35}
 --- !u!1 &592048175
 GameObject:
   m_ObjectHideFlags: 0

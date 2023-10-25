@@ -5,31 +5,23 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target; // Takip edilecek nesnenin referansý
-    public Collider2D boundaryCollider; // Duvarlarý temsil eden Collider
 
-    private Vector3 minBound, maxBound; // Sýnýrlarýn deðerleri
+    public Transform target; // The reference to the object to follow
+    public float followSpeed = 5f; // How fast the camera follows the target
+     public Vector2 minBoundaries, maxBoundaries; // SÄ±nÄ±rlarÄ±n deÄŸerleri (minX, maxX, minY, maxY olarak da kullanÄ±labilir)
 
-    void Start()
-    {
-        if (boundaryCollider != null)
-        {
-            // Duvar collider'ýnýn sýnýrlarýný al
-            minBound = boundaryCollider.bounds.min;
-            maxBound = boundaryCollider.bounds.max;
-        }
-    }
-
-    void LateUpdate()
+    void Update()
     {
         if (target != null)
         {
-            // Hedefin pozisyonunu sýnýrla
-            float clampedX = Mathf.Clamp(target.position.x, minBound.x, maxBound.x);
-            float clampedY = Mathf.Clamp(target.position.y, minBound.y, maxBound.y);
+            // Hedefin pozisyonunu sÄ±nÄ±rla
+            float clampedX = Mathf.Clamp(target.position.x, minBoundaries.x, maxBoundaries.x);
+            float clampedY = Mathf.Clamp(target.position.y, minBoundaries.y, maxBoundaries.y);
 
-            // Kameranýn yeni pozisyonunu belirle
-            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+            // KameranÄ±n yeni pozisyonunu belirle
+            Vector3 targetPosition = new Vector3(clampedX, clampedY, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
         }
     }
+
 }
