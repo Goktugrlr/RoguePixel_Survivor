@@ -6,9 +6,10 @@ public class CharacterMovement : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
     }
 
     void Update()

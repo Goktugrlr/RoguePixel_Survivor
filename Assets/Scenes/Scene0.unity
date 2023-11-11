@@ -220,8 +220,8 @@ GameObject:
   - component: {fileID: 275394148}
   - component: {fileID: 275394147}
   - component: {fileID: 275394151}
-  - component: {fileID: 275394152}
   - component: {fileID: 275394153}
+  - component: {fileID: 275394154}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -350,8 +350,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b3164b7ef202a41820491616cdc42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &275394152
-BoxCollider2D:
+--- !u!114 &275394153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275394146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a80bb897831f041bccf0bb4f5c9c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 2001573029}
+  - {fileID: 0}
+--- !u!70 &275394154
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -382,34 +397,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2}
-  m_EdgeRadius: 0
---- !u!114 &275394153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275394146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a80bb897831f041bccf0bb4f5c9c98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 2001573029}
-  - {fileID: 0}
+  m_Offset: {x: -0.0034966469, y: -0.0069932938}
+  m_Size: {x: 1.0209799, y: 2.0419598}
+  m_Direction: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1105,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3462874576867754053, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
       propertyPath: m_Name
-      value: Spawner (1)
+      value: Spawner 2
       objectReference: {fileID: 0}
     - target: {fileID: 4789985016622052786, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1157,6 +1147,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5163801359046368354, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163801359046368354, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 1388476137036049635, guid: c99e5f7d8faaa6d4b99a98027b091135, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1173,6 +1171,10 @@ PrefabInstance:
     - target: {fileID: 3462874576867754053, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
       propertyPath: m_Name
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462874576867754053, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4789985016622052786, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1214,6 +1216,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5163801359046368354, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163801359046368354, guid: b00351d6ede7dd941a6a02d3722fb939, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 1388476137036049635, guid: c99e5f7d8faaa6d4b99a98027b091135, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
