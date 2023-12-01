@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3323059957571444378}
   m_Layer: 0
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,6 +183,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.001520156, y: 0.07211903}
-  m_Size: {x: 0.5549634, y: 0.5164642}
+  m_Offset: {x: -0.021404115, y: 0.07211903}
+  m_Size: {x: 0.515196, y: 0.5164645}
   m_Direction: 1

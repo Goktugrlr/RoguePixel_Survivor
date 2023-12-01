@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public float health = 100;
     private Transform player;
     public Rigidbody2D rb;
     public Animator animator;
