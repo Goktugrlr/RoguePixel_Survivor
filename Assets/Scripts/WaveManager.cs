@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class WaveManager : MonoBehaviour
     private float waveTimer;
     private int waveNumber = 1;
     private bool waveInProgress = false;
-    public EnemySpawner enemySpawner;
+    public List<EnemySpawner> enemySpawners;
     private int activeEnemies = 0;
-    public Text waveOverText;
+    public TMP_Text waveOverText;
     public Button nextWaveButton;
     // Start is called before the first frame update
     void Start()
@@ -43,19 +44,29 @@ public class WaveManager : MonoBehaviour
     {
         waveInProgress = true;
         waveTimer = waveDuration;
-        StartSpawningEnemies();
+        foreach(var spawner in enemySpawners)
+        {
+            spawner.StartSpawning();
+        }
         nextWaveButton.gameObject.SetActive(false);
+        waveOverText.gameObject.SetActive(false);
     }
 
     public void StartSpawningEnemies()
     {
-        enemySpawner.StartSpawning();
+        foreach(var spawner in enemySpawners)
+        {
+            spawner.StartSpawning();
+        }
         activeEnemies++;
     }
 
     private void StopSpawningEnemies()
     {
-        enemySpawner.StopSpawning();
+        foreach(var spawner in enemySpawners)
+        {
+            spawner.StopSpawning();
+        }
     }
 
     public void OnNextWaveButtonClicked()
@@ -74,6 +85,7 @@ public class WaveManager : MonoBehaviour
 
     private void showWaveOverMenu()
     {
+        Debug.Log("Basladi");
         waveOverText.text = "Wave " + waveNumber + " Complete!";
         nextWaveButton.gameObject.SetActive(true);
     }
