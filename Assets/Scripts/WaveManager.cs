@@ -6,13 +6,13 @@ using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
-    public float waveDuration = 60.0f;
+    public float waveDuration = 10.0f;
     private float waveTimer;
     private int waveNumber = 1;
     private bool waveInProgress = false;
     public List<EnemySpawner> enemySpawners;
     private int activeEnemies = 0;
-    public TMP_Text waveOverText;
+    public TMP_Text waveOverText;   
     public Button nextWaveButton;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,7 @@ public class WaveManager : MonoBehaviour
     {
         if(activeEnemies == 0 && !waveInProgress)
         {
+            
             showWaveOverMenu();
         }
         if(waveInProgress)
@@ -33,8 +34,9 @@ public class WaveManager : MonoBehaviour
             waveTimer -= Time.deltaTime;
             if(waveTimer <= 0)
             {
-                waveInProgress = false;
+                Debug.Log("Wave Over");
                 StopSpawningEnemies();
+                waveInProgress = false;
             }
 
         }
@@ -44,12 +46,9 @@ public class WaveManager : MonoBehaviour
     {
         waveInProgress = true;
         waveTimer = waveDuration;
-        foreach(var spawner in enemySpawners)
-        {
-            spawner.StartSpawning();
-        }
         nextWaveButton.gameObject.SetActive(false);
         waveOverText.gameObject.SetActive(false);
+        StartSpawningEnemies();
     }
 
     public void StartSpawningEnemies()
@@ -57,8 +56,8 @@ public class WaveManager : MonoBehaviour
         foreach(var spawner in enemySpawners)
         {
             spawner.StartSpawning();
+            
         }
-        activeEnemies++;
     }
 
     private void StopSpawningEnemies()
@@ -80,14 +79,22 @@ public class WaveManager : MonoBehaviour
 
     public void EnemyDefeated()
     {
+        
         activeEnemies--;
+        
+    }
+
+    public void EnemySpawned()
+    {
+        activeEnemies++;
+        
     }
 
     private void showWaveOverMenu()
     {
-        Debug.Log("Basladi");
         waveOverText.text = "Wave " + waveNumber + " Complete!";
         nextWaveButton.gameObject.SetActive(true);
+        waveOverText.gameObject.SetActive(true);
     }
 
 }

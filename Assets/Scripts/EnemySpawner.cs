@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             Destroy(newEnemy, 10);
             timer = 0;
+            waveManager.EnemySpawned();
         }
 
         timer += Time.deltaTime;
