@@ -10,11 +10,15 @@ public class WaveManager : MonoBehaviour
     private float waveTimer;
     private int waveNumber = 1;
     private bool waveInProgress = false;
+    private int killCount = 0;
     public List<EnemySpawner> enemySpawners;
     private int activeEnemies = 0;
     public TMP_Text waveOverText;   
     public Button nextWaveButton;
     public TMP_Text waveDurationText;
+    public TMP_Text waveNumberText;
+    public TMP_Text totalKillCountText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,12 +47,15 @@ public class WaveManager : MonoBehaviour
             }
 
         }
+        
+        totalKillCountText.text = "Total Kills: " + killCount;
     }
 
     public void StartWave()
     {
         waveInProgress = true;
         waveTimer = waveDuration;
+        waveNumberText.text = "Wave: " + waveNumber;
         nextWaveButton.gameObject.SetActive(false);
         waveOverText.gameObject.SetActive(false);
         StartSpawningEnemies();
@@ -82,7 +89,7 @@ public class WaveManager : MonoBehaviour
 
     public void EnemyDefeated()
     {
-        
+        killCount++;
         activeEnemies--;
         
     }
