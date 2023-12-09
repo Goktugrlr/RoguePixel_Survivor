@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     private int activeEnemies = 0;
     public TMP_Text waveOverText;   
     public Button nextWaveButton;
+    public TMP_Text waveDurationText;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(activeEnemies == 0 && !waveInProgress)
+        if(!waveInProgress)
         {
             
             showWaveOverMenu();
@@ -32,10 +33,12 @@ public class WaveManager : MonoBehaviour
         if(waveInProgress)
         {
             waveTimer -= Time.deltaTime;
+            waveDurationText.text = "Remaining Time: " + waveTimer.ToString("F1");
             if(waveTimer <= 0)
             {
                 Debug.Log("Wave Over");
                 StopSpawningEnemies();
+                DestroyAllEnemies();
                 waveInProgress = false;
             }
 
@@ -88,6 +91,15 @@ public class WaveManager : MonoBehaviour
     {
         activeEnemies++;
         
+    }
+
+    private void DestroyAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 
     private void showWaveOverMenu()
