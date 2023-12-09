@@ -621,8 +621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2001573029}
+  - {fileID: 1184150710}
 --- !u!70 &275394154
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
