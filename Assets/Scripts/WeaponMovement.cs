@@ -5,10 +5,6 @@ public class WeaponMovement : MonoBehaviour
     private Vector3 mousePosition;
     public float rotationSpeed = 100f;
 
-    public Transform bulletSpawn;
-    public GameObject bulletPrefab;
-    public float bulletSpeed = 10f;
-
     private void Start()
     {
         weaponTransform = this.transform;
@@ -17,7 +13,6 @@ public class WeaponMovement : MonoBehaviour
     private void Update()
     {
         aiming();
-        shooting();
     }
 
     private void aiming() {
@@ -32,23 +27,6 @@ public class WeaponMovement : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Euler(0, 0, rotz);
-        }
-    }
-
-    private void shooting()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0f;
-
-            Vector3 direction = (mousePosition - bulletSpawn.position).normalized;
-
-            var bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-
-            Destroy(bullet, 1f);
         }
     }
 
