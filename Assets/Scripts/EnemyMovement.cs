@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public float health = 100;
+    private float currentHealth;
     private Transform player;
     public Transform attackPoint;
     public Rigidbody2D rb;
@@ -12,11 +13,16 @@ public class EnemyMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 20;
     public LayerMask playerLayer;
+    private WaveManager waveManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+
+        currentHealth = health;
+
+        waveManager = GameObject.FindAnyObjectByType<WaveManager>();
     }
     void Update()
     {
@@ -34,6 +40,12 @@ public class EnemyMovement : MonoBehaviour
         }
 
         TowardToPlayer();
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     void TrackingMovement(Vector3 direction)
@@ -80,6 +92,17 @@ public class EnemyMovement : MonoBehaviour
         else if (direction.x > 0)
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+    }
+
+    public void TakeDamage(float damage) 
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0) 
+        {
+            Destroy(gameObject);
+            waveManager.EnemyDefeated();
         }
     }
 }
