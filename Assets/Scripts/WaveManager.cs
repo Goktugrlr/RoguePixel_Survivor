@@ -6,7 +6,7 @@ using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
-    public float waveDuration = 10.0f;
+    public float waveDuration = 30.0f;
     private float waveTimer;
     private int waveNumber = 1;
     private bool waveInProgress = false;

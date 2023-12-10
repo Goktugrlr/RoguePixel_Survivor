@@ -7,11 +7,13 @@ public class CharacterMovement : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
     public TMP_Text healthText;
-    public float health = 100f;
+    public int maxHealth = 100;
+    int currentHealth;
 
 
     private void Start()
     {
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
     }
@@ -20,7 +22,7 @@ public class CharacterMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        healthText.text = "Health: " + health;
+        healthText.text = "Health: " + currentHealth;
 
     }
 
@@ -30,5 +32,21 @@ public class CharacterMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+
+
+    }
+
+    void Die()
+    {
+        //Öldükten sonraki kýsým buraya doldurulacak
+    }
 
 }

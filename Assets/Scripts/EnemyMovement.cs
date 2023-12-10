@@ -4,10 +4,14 @@ public class EnemyMovement : MonoBehaviour
 {
     public float health = 100;
     private Transform player;
+    public Transform attackPoint;
     public Rigidbody2D rb;
     public Animator animator;
     private Vector2 movement;
     public float moveSpeed = 8f;
+    public float attackRange = 0.5f;
+    public int attackDamage = 20;
+    public LayerMask playerLayer;
 
     void Start()
     {
@@ -28,6 +32,8 @@ public class EnemyMovement : MonoBehaviour
             direction.Normalize();
             movement = direction;
         }
+
+        TowardToPlayer();
     }
 
     void TrackingMovement(Vector3 direction)
@@ -43,24 +49,37 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
-            moveSpeed = 0;
-            animator.SetBool("IsAttacking", true);
+            Attack();
         }
     }
 
-    public void AttackAnimationComplete()
+    void Attack()
     {
-        animator.SetBool("IsAttacking", false);
+        animator.SetTrigger("Attack");
+
+        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
+        Debug.Log("We hit " + hitPlayer.name);
+        hitPlayer.gameObject.GetComponent<CharacterMovement>().TakeDamage(attackDamage);
     }
 
-    public void OnCollisionExit2D(Collision2D collision)
+    private void OnDrawGizmosSelected()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            moveSpeed = 8;
-        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 
-    } 
+    void TowardToPlayer()
+    {
+        Vector2 direction = player.position - transform.position;
+
+        if (direction.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else if (direction.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+    }
 }
