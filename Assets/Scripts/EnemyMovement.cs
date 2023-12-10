@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 20;
     public LayerMask playerLayer;
-    private WaveManager waveManager;
+
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
 
         currentHealth = health;
 
-        waveManager = GameObject.FindAnyObjectByType<WaveManager>();
+
     }
     void Update()
     {
@@ -102,7 +102,11 @@ public class EnemyMovement : MonoBehaviour
         if (currentHealth <= 0) 
         {
             Destroy(gameObject);
-            waveManager.EnemyDefeated();
+
         }
+    }
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }
