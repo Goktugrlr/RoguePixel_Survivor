@@ -6,6 +6,10 @@ public class RifleShootController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 40f;
 
+    public int bulletDamage = 20;
+    private float lastFireTime;
+    public float fireRate = 1f;
+
     // Update is called once per frame
     void Update()
     {
@@ -14,7 +18,7 @@ public class RifleShootController : MonoBehaviour
 
     private void Shooting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time - lastFireTime >= 1f / fireRate)
         {
             Vector3 mousePosititon = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosititon.z = 0f;
@@ -24,7 +28,10 @@ public class RifleShootController : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = directon * bulletSpeed;
 
             Destroy(bullet, 1f);
+
+            lastFireTime = Time.time - 0.8f;
         }
+        
     }
 
 }

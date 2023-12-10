@@ -6,6 +6,10 @@ public class ShotgunShootController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 30f;
 
+    public int bulletDamage = 35;
+    private float lastFireTime;
+    public float fireRate = 1f;
+
 
     // Update is called once per frame
     void Update()
@@ -13,19 +17,22 @@ public class ShotgunShootController : MonoBehaviour
         Shooting();
     }
 
-    private void Shooting() 
+    private void Shooting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time - lastFireTime >= 1f / fireRate)
         {
             Vector3[] directions = { bulletSpawn.right, (Quaternion.Euler(0, 0, -10f) * bulletSpawn.right), (Quaternion.Euler(0, 0, 10f) * bulletSpawn.right) };
 
-            for (int i = 0;i < directions.Length; i++) 
+            for (int i = 0; i < directions.Length; i++)
             {
                 var bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-                bullet.GetComponent<Rigidbody2D>().velocity = directions[i].normalized*bulletSpeed;
+                bullet.GetComponent<BulletDamage>().damage = bulletDamage; 
+                bullet.GetComponent<Rigidbody2D>().velocity = directions[i].normalized * bulletSpeed;
 
                 Destroy(bullet, 0.5f);
             }
+
+            lastFireTime = Time.time - 0.5f;
         }
     }
 }
