@@ -1895,6 +1895,8 @@ MonoBehaviour:
   bulletSpawn: {fileID: 704290783}
   bulletPrefab: {fileID: 8970558708152792489, guid: d255f8da03c69dd4398f8ba7e33e8004, type: 3}
   bulletSpeed: 30
+  bulletDamage: 20
+  fireRate: 1
 --- !u!114 &1184150710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2755,6 +2757,8 @@ MonoBehaviour:
   bulletSpawn: {fileID: 944003294}
   bulletPrefab: {fileID: 8970558708152792489, guid: d255f8da03c69dd4398f8ba7e33e8004, type: 3}
   bulletSpeed: 30
+  bulletDamage: 35
+  fireRate: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
