@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject knightPrefab, wizardPrefab;
     public float spawnTime = 1;
     public float timer = 0;
     public WaveManager waveManager;
@@ -13,13 +13,20 @@ public class EnemySpawner : MonoBehaviour
     {
         if (isSpawning && timer > spawnTime)
         {
-            GameObject newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-            Destroy(newEnemy, 10);
+            GameObject enemyToSpawn = GetRandomEnemyPrefab();
+            GameObject newEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
             timer = 0;
             waveManager.EnemySpawned();
         }
 
         timer += Time.deltaTime;
+    }
+
+    private GameObject GetRandomEnemyPrefab()
+    {
+        int randomIndex = Random.Range(0, 2); 
+        GameObject[] enemyPrefabs = { knightPrefab, wizardPrefab};
+        return enemyPrefabs[randomIndex];
     }
 
     public void StartSpawning()

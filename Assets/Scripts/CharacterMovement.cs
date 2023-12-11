@@ -32,6 +32,12 @@ public class CharacterMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
+
+    public int GetHealth()
+    {
+        return maxHealth;
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

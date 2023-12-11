@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,19 +18,16 @@ public class WaveManager : MonoBehaviour
     public TMP_Text waveNumberText;
     public TMP_Text totalKillCountText;
 
-    // Start is called before the first frame update
     void Start()
     {
         nextWaveButton.onClick.AddListener(OnNextWaveButtonClicked);
         StartWave();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!waveInProgress)
-        {
-            
+        {            
             showWaveOverMenu();
         }
         if(waveInProgress)
@@ -53,6 +49,9 @@ public class WaveManager : MonoBehaviour
 
     public void StartWave()
     {
+        //GameObject player = GameObject.FindWithTag("Player");
+        //player.GetComponent<CharacterMovement>().GetHealth(); -> Göktuð
+
         waveInProgress = true;
         waveTimer = waveDuration;
         waveNumberText.text = "Wave: " + waveNumber;

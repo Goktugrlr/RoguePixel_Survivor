@@ -72,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
         animator.SetTrigger("Attack");
 
         Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
-        Debug.Log("We hit " + hitPlayer.name);
+        Debug.Log("We hit the " + hitPlayer);
         hitPlayer.gameObject.GetComponent<CharacterMovement>().TakeDamage(attackDamage);
     }
 

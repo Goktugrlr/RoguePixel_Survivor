@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23e918e7ec67a942ba8df76ac174551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1388476137036049635, guid: c99e5f7d8faaa6d4b99a98027b091135, type: 3}
+  knightPrefab: {fileID: 1388476137036049635, guid: c99e5f7d8faaa6d4b99a98027b091135, type: 3}
+  wizardPrefab: {fileID: 3556720998052278217, guid: 219b389ac7dcaf241baebbe7e0f9a362, type: 3}
   spawnTime: 2
   timer: 0
   waveManager: {fileID: 0}
