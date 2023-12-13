@@ -130,10 +130,16 @@ public class WaveManager : MonoBehaviour
 
     public void HandlePlayerDeath()
     {
-        waveInProgress = false;
+        DestroyAllEnemies();
         waveOverText.text = "You Died!";
         waveOverText.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
+        continueButton.onClick.AddListener(onContinueButtonClicked);
+    }
+
+    public void onContinueButtonClicked()
+    {
+        Restart();
     }
 
     public void Restart()

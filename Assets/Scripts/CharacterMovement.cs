@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public TMP_Text healthText;
     public int maxHealth = 100;
     int currentHealth;
+    public WaveManager waveManager;
 
 
     private void Start()
@@ -44,15 +45,12 @@ public class CharacterMovement : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Die();
+            waveManager.HandlePlayerDeath();
         }
 
 
     }
 
-    void Die()
-    {
-        //Öldükten sonraki kýsým buraya doldurulacak
-    }
+
 
 }
