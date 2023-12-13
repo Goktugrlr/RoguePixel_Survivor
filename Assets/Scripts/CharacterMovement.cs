@@ -35,7 +35,7 @@ public class CharacterMovement : MonoBehaviour
 
     public int GetHealth()
     {
-        return maxHealth;
+        return currentHealth;
     }
 
     public void TakeDamage(int damage)

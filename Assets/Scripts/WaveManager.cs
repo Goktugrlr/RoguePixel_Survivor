@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
     public float waveDuration = 30.0f;
     private float waveTimer;
-    private int waveNumber = 1;
+    private int waveNumber = 0;
     private bool waveInProgress = false;
     private int killCount = 0;
     public List<EnemySpawner> enemySpawners;
@@ -27,7 +28,15 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        if(!waveInProgress)
+        GameObject player = GameObject.FindWithTag("Player");
+        Debug.Log(player.GetComponent<CharacterMovement>().GetHealth());
+        if (player.GetComponent<CharacterMovement>().GetHealth() <= 0)
+        {
+            HandlePlayerDeath();
+        }
+
+
+        if (!waveInProgress)
         {            
             showWaveOverMenu();
         }
@@ -51,7 +60,7 @@ public class WaveManager : MonoBehaviour
     public void StartWave()
     {
         //GameObject player = GameObject.FindWithTag("Player");
-        //player.GetComponent<CharacterMovement>().GetHealth(); -> G�ktu�
+        //player.GetComponent<CharacterMovement>().GetHealth(); -> Goktug sonra bakacak
 
         waveInProgress = true;
         waveTimer = waveDuration;
@@ -127,4 +136,8 @@ public class WaveManager : MonoBehaviour
         continueButton.gameObject.SetActive(true);
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
