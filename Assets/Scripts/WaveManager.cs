@@ -17,6 +17,7 @@ public class WaveManager : MonoBehaviour
     public TMP_Text waveDurationText;
     public TMP_Text waveNumberText;
     public TMP_Text totalKillCountText;
+    public Button continueButton;
 
     void Start()
     {
@@ -50,13 +51,16 @@ public class WaveManager : MonoBehaviour
     public void StartWave()
     {
         //GameObject player = GameObject.FindWithTag("Player");
-        //player.GetComponent<CharacterMovement>().GetHealth(); -> Göktuð
+        //player.GetComponent<CharacterMovement>().GetHealth(); -> Gï¿½ktuï¿½
 
         waveInProgress = true;
         waveTimer = waveDuration;
+        waveNumber++;
+        waveDuration +=5;
         waveNumberText.text = "Wave: " + waveNumber;
         nextWaveButton.gameObject.SetActive(false);
         waveOverText.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
         StartSpawningEnemies();
     }
 
@@ -81,7 +85,7 @@ public class WaveManager : MonoBehaviour
     {
         if(!waveInProgress)
         {
-            waveNumber++;
+            
             StartWave();
         }
     }
@@ -113,6 +117,14 @@ public class WaveManager : MonoBehaviour
         waveOverText.text = "Wave " + waveNumber + " Complete!";
         nextWaveButton.gameObject.SetActive(true);
         waveOverText.gameObject.SetActive(true);
+    }
+
+    public void HandlePlayerDeath()
+    {
+        waveInProgress = false;
+        waveOverText.text = "You Died!";
+        waveOverText.gameObject.SetActive(true);
+        continueButton.gameObject.SetActive(true);
     }
 
 }
