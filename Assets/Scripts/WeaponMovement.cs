@@ -20,7 +20,7 @@ public class WeaponMovement : MonoBehaviour
         Vector3 rotation = mousePosition - transform.position;
         float rotz = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
-        if (mousePosition.x < weaponTransform.position.y)
+        if (mousePosition.x < weaponTransform.position.x)
         {
             transform.rotation = Quaternion.Euler(180, 0, -rotz);
         }

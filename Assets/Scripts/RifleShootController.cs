@@ -8,7 +8,7 @@ public class RifleShootController : MonoBehaviour
 
     public int bulletDamage = 20;
     private float lastFireTime;
-    public float fireRate = 1f;
+    private float fireRate = 1f;
 
     // Update is called once per frame
     void Update()
