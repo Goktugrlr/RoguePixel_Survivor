@@ -63,17 +63,14 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Attack();
+            Attack(collision.gameObject);
         }
     }
 
-    void Attack()
+    void Attack(GameObject x)
     {
         animator.SetTrigger("Attack");
-
-        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
-        Debug.Log("We hit the " + hitPlayer);
-        hitPlayer.gameObject.GetComponent<CharacterMovement>().TakeDamage(attackDamage);
+        x.GetComponent<CharacterMovement>().TakeDamage(attackDamage);
     }
 
     private void OnDrawGizmosSelected()

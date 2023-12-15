@@ -29,7 +29,6 @@ public class WaveManager : MonoBehaviour
     void Update()
     {
         GameObject player = GameObject.FindWithTag("Player");
-        Debug.Log(player.GetComponent<CharacterMovement>().GetHealth());
         if (player.GetComponent<CharacterMovement>().GetHealth() <= 0)
         {
             HandlePlayerDeath();
@@ -59,8 +58,9 @@ public class WaveManager : MonoBehaviour
 
     public void StartWave()
     {
-        //GameObject player = GameObject.FindWithTag("Player");
-        //player.GetComponent<CharacterMovement>().GetHealth(); -> Goktug sonra bakacak
+        GameObject player = GameObject.FindWithTag("Player");
+        player.GetComponent<CharacterMovement>().SetHealth(100);
+        //player.GetComponent<CharacterMovement>().maxHealth
 
         waveInProgress = true;
         waveTimer = waveDuration;
@@ -93,8 +93,7 @@ public class WaveManager : MonoBehaviour
     public void OnNextWaveButtonClicked()
     {
         if(!waveInProgress)
-        {
-            
+        { 
             StartWave();
         }
     }
@@ -134,14 +133,7 @@ public class WaveManager : MonoBehaviour
         waveOverText.text = "You Died!";
         waveOverText.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
-        continueButton.onClick.AddListener(onContinueButtonClicked);
     }
-
-    public void onContinueButtonClicked()
-    {
-        Restart();
-    }
-
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
