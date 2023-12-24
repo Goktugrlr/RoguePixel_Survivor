@@ -11,7 +11,8 @@ public class ShotgunShootController : MonoBehaviour
     public float fireRate = 1f;
 
 
-    // Update is called once per frame
+    public AudioSource shotgunAudioSource;
+
     void Update()
     {
         Shooting();
@@ -22,6 +23,8 @@ public class ShotgunShootController : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.time - lastFireTime >= 1f / fireRate)
         {
             Vector3[] directions = { bulletSpawn.right, (Quaternion.Euler(0, 0, -10f) * bulletSpawn.right), (Quaternion.Euler(0, 0, 10f) * bulletSpawn.right) };
+
+            shotgunAudioSource.Play();
 
             for (int i = 0; i < directions.Length; i++)
             {

@@ -10,7 +10,8 @@ public class RifleShootController : MonoBehaviour
     private float lastFireTime;
     private float fireRate = 1f;
 
-    // Update is called once per frame
+    public AudioSource ak47AudioSource;
+
     void Update()
     {
         Shooting();
@@ -20,6 +21,8 @@ public class RifleShootController : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && Time.time - lastFireTime >= 1f / fireRate)
         {
+            ak47AudioSource.Play();
+
             Vector3 mousePosititon = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosititon.z = 0f;
 
