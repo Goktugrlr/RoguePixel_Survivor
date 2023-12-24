@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BulletDamage : MonoBehaviour
@@ -9,22 +10,22 @@ public class BulletDamage : MonoBehaviour
     {
         waveManager = GameObject.FindAnyObjectByType<WaveManager>();
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
 
-            if(enemyMovement != null)
+            if (enemyMovement != null)
             {
                 enemyMovement.TakeDamage(damage);
                 Destroy(gameObject);
-                if (enemyMovement.GetCurrentHealth() <= 0) 
+                if (enemyMovement.GetCurrentHealth() <= 0)
                 {
                     waveManager.EnemyDefeated();
                 }
-               
+
             }
         }
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -12,17 +13,16 @@ public class EnemyMovement : MonoBehaviour
     public float moveSpeed = 8f;
     public float attackRange = 0.5f;
     public int attackDamage = 20;
-    public LayerMask playerLayer;
+    bool isAlive;
 
 
     void Start()
     {
+        isAlive = true;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
 
         currentHealth = health;
-
-
     }
     void Update()
     {
@@ -41,11 +41,6 @@ public class EnemyMovement : MonoBehaviour
 
         TowardToPlayer();
 
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-            return;
-        }
     }
 
     void TrackingMovement(Vector3 direction)
@@ -56,7 +51,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TrackingMovement(movement);
+        if (isAlive)
+        {
+            TrackingMovement(movement);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -73,10 +71,6 @@ public class EnemyMovement : MonoBehaviour
         x.GetComponent<CharacterMovement>().TakeDamage(attackDamage);
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
 
     void TowardToPlayer()
     {
@@ -98,10 +92,18 @@ public class EnemyMovement : MonoBehaviour
 
         if (currentHealth <= 0) 
         {
-            Destroy(gameObject);
-
+            animator.SetTrigger("isDead");
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            isAlive = false;
+            StartCoroutine(DestroyAfterAnimation(gameObject));
         }
     }
+    private IEnumerator DestroyAfterAnimation(GameObject enemy)
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(enemy);
+    }
+
     public float GetCurrentHealth()
     {
         return currentHealth;
