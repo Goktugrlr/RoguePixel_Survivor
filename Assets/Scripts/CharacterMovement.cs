@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     public WaveManager waveManager;
+    private bool isDead = false;
 
     
     private void Start()
@@ -30,7 +31,9 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(isDead==false){
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            }
     }
 
 
@@ -54,6 +57,17 @@ public class CharacterMovement : MonoBehaviour
         } */
 
 
+    }
+
+    public void SetIsDead(bool dead)
+    {
+        isDead = dead;
+    }
+
+
+    public bool GetIsDead()
+    {
+        return isDead;
     }
 
 

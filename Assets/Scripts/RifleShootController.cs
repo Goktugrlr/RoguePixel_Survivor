@@ -14,7 +14,11 @@ public class RifleShootController : MonoBehaviour
 
     void Update()
     {
-        Shooting();
+        GameObject player = GameObject.FindWithTag("Player");
+        if(player.GetComponent<CharacterMovement>().GetIsDead()==false)
+        {
+            Shooting();
+        }
     }
 
     private void Shooting()

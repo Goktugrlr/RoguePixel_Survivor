@@ -35,7 +35,7 @@ public class WaveManager : MonoBehaviour
         }
 
 
-        if (!waveInProgress)
+        if (!waveInProgress && player.GetComponent<CharacterMovement>().GetIsDead()==false)
         {            
             showWaveOverMenu();
         }
@@ -129,10 +129,13 @@ public class WaveManager : MonoBehaviour
 
     public void HandlePlayerDeath()
     {
+        GameObject player = GameObject.FindWithTag("Player");
+        player.GetComponent<CharacterMovement>().SetIsDead(true);
         DestroyAllEnemies();
         waveOverText.text = "You Died!";
         waveOverText.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
+        waveInProgress = false;
     }
     public void Restart()
     {
