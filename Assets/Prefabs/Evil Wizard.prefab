@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.09941287, y: -0.07, z: 0}
-  m_LocalScale: {x: 4.65, y: 5.0515, z: 1}
+  m_LocalScale: {x: 5.5, y: 6.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8613124987319791245}
@@ -129,9 +129,6 @@ MonoBehaviour:
   moveSpeed: 8
   attackRange: 1.2
   attackDamage: 20
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!50 &2107887844891412148
 Rigidbody2D:
   serializedVersion: 4
