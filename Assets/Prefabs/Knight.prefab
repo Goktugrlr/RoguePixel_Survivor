@@ -128,7 +128,7 @@ MonoBehaviour:
   animator: {fileID: 7043505842681352645}
   moveSpeed: 8
   attackRange: 0.5
-  attackDamage: 20
+  attackDamage: 15
 --- !u!50 &6553228425143508740
 Rigidbody2D:
   serializedVersion: 4
