@@ -31,6 +31,7 @@ public class WaveManager : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         if (player.GetComponent<CharacterMovement>().GetHealth() <= 0)
         {
+            
             HandlePlayerDeath();
         }
 
@@ -122,7 +123,7 @@ public class WaveManager : MonoBehaviour
 
     private void showWaveOverMenu()
     {
-        waveOverText.text = "Wave " + waveNumber + " Complete!";
+        waveOverText.text = "Wave " + waveNumber + " Completed!";
         nextWaveButton.gameObject.SetActive(true);
         waveOverText.gameObject.SetActive(true);
     }

@@ -46,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
     void TrackingMovement(Vector3 direction)
     {
         rb.MovePosition(transform.position + (direction * moveSpeed * Time.deltaTime));
-        animator.SetFloat("Speed", Mathf.Abs(moveSpeed));
+        animator.SetFloat("Speed",Mathf.Abs(moveSpeed));
     }
 
     private void FixedUpdate()

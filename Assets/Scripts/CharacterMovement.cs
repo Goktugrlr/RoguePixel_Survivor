@@ -44,17 +44,17 @@ public class CharacterMovement : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        maxHealth = health;
+        currentHealth = health;
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
-       /* if(currentHealth <= 0)
+        if(currentHealth <= 0)
         {
-            waveManager.HandlePlayerDeath();
-        } */
+            currentHealth = 0;
+        } 
 
 
     }
