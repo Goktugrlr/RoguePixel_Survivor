@@ -12,6 +12,7 @@ public class WaveManager : MonoBehaviour
     private bool waveInProgress = false;
     private int killCount = 0;
     public List<EnemySpawner> enemySpawners;
+    private List<EnemySpawner> activeSpawners = new List<EnemySpawner>(); 
     private int activeEnemies = 0;
     public TMP_Text waveOverText;   
     public Button nextWaveButton;
@@ -61,7 +62,6 @@ public class WaveManager : MonoBehaviour
     {
         GameObject player = GameObject.FindWithTag("Player");
         player.GetComponent<CharacterMovement>().SetHealth(100);
-        //player.GetComponent<CharacterMovement>().maxHealth
 
         waveInProgress = true;
         waveTimer = waveDuration;
@@ -74,13 +74,10 @@ public class WaveManager : MonoBehaviour
         StartSpawningEnemies();
     }
 
+
     public void StartSpawningEnemies()
     {
-        foreach(var spawner in enemySpawners)
-        {
-            spawner.StartSpawning();
-            
-        }
+        
     }
 
     private void StopSpawningEnemies()
