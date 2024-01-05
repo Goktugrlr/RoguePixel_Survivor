@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 20;
     bool isAlive;
+    public GameObject healthPotion;
 
 
     void Start()
@@ -89,6 +90,7 @@ public class EnemyMovement : MonoBehaviour
     public void TakeDamage(float damage) 
     {
         currentHealth -= damage;
+        float dropChance = 0.2f;
 
         if (currentHealth <= 0) 
         {
@@ -96,6 +98,10 @@ public class EnemyMovement : MonoBehaviour
             gameObject.GetComponent<Collider2D>().enabled = false;
             isAlive = false;
             StartCoroutine(DestroyAfterAnimation(gameObject));
+            if (Random.value <= dropChance)
+            {
+                Instantiate(healthPotion, transform.position, Quaternion.identity);
+            }
         }
     }
     private IEnumerator DestroyAfterAnimation(GameObject enemy)

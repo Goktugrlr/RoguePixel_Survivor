@@ -129,6 +129,7 @@ MonoBehaviour:
   moveSpeed: 8
   attackRange: 1.2
   attackDamage: 20
+  healthPotion: {fileID: 4295658700064130634, guid: 4799b1f94db69704fb9459ed1c15a425, type: 3}
 --- !u!50 &2107887844891412148
 Rigidbody2D:
   serializedVersion: 4
