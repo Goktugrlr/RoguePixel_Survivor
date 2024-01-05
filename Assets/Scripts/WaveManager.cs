@@ -74,10 +74,28 @@ public class WaveManager : MonoBehaviour
         StartSpawningEnemies();
     }
 
+    private void RandomizeSpawners()
+    {
+        for (int i = 0; i < enemySpawners.Count; i++)
+        {
+            EnemySpawner temp = enemySpawners[i];
+            int randomIndex = Random.Range(i, enemySpawners.Count);
+            enemySpawners[i] = enemySpawners[randomIndex];
+            enemySpawners[randomIndex] = temp;
+        }
+    }
 
     public void StartSpawningEnemies()
     {
-        
+        activeSpawners.Clear();
+        RandomizeSpawners();
+
+        int spawnerCountToActivate = 3;
+        for (int i = 0; i < spawnerCountToActivate; i++)
+        {
+            enemySpawners[i].StartSpawning();
+            activeSpawners.Add(enemySpawners[i]);
+        }
     }
 
     private void StopSpawningEnemies()
