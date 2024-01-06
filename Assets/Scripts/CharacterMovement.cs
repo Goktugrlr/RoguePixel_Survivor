@@ -74,9 +74,15 @@ public class CharacterMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "HealthPotion")
         {
-            
-                currentHealth += 20;
-                Destroy(other.gameObject);
+                if (currentHealth +20 <= maxHealth){
+                    currentHealth += 20;
+                    Destroy(other.gameObject);
+                }
+                else if (currentHealth +20 > maxHealth){
+                    currentHealth = maxHealth;
+                    Destroy(other.gameObject);
+                }
+                
         
         }
     }

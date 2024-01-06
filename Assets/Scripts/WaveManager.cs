@@ -20,6 +20,8 @@ public class WaveManager : MonoBehaviour
     public TMP_Text waveNumberText;
     public TMP_Text totalKillCountText;
     public Button continueButton;
+    public AugmentManager augmentManager;
+    private bool waveEndStarted = false;
 
     void Start()
     {
@@ -37,8 +39,10 @@ public class WaveManager : MonoBehaviour
         }
 
 
-        if (!waveInProgress && player.GetComponent<CharacterMovement>().GetIsDead()==false)
+        if (!waveInProgress && player.GetComponent<CharacterMovement>().GetIsDead()==false && !waveEndStarted)
         {            
+            waveEndStarted = true;
+            augmentManager.EndWave();
             showWaveOverMenu();
         }
         if(waveInProgress)
@@ -50,6 +54,7 @@ public class WaveManager : MonoBehaviour
                 Debug.Log("Wave Over");
                 StopSpawningEnemies();
                 DestroyAllEnemies();
+                DestroyAllHealthPotions();
                 waveInProgress = false;
             }
 
@@ -61,8 +66,9 @@ public class WaveManager : MonoBehaviour
     public void StartWave()
     {
         GameObject player = GameObject.FindWithTag("Player");
-        player.GetComponent<CharacterMovement>().SetHealth(100);
+        player.GetComponent<CharacterMovement>().SetHealth(player.GetComponent<CharacterMovement>().maxHealth);
 
+        waveEndStarted = false;
         waveInProgress = true;
         waveTimer = waveDuration;
         waveNumber++;
@@ -136,8 +142,18 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    private void DestroyAllHealthPotions()
+    {
+        GameObject[] healthPotions = GameObject.FindGameObjectsWithTag("HealthPotion");
+        foreach(GameObject healthPotion in healthPotions)
+        {
+            Destroy(healthPotion);
+        }
+    }
+
     private void showWaveOverMenu()
     {
+        
         waveOverText.text = "Wave " + waveNumber + " Completed!";
         nextWaveButton.gameObject.SetActive(true);
         waveOverText.gameObject.SetActive(true);
