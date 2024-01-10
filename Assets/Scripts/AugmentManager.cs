@@ -13,6 +13,8 @@ public class AugmentManager : MonoBehaviour
     public GameObject augmentPanel;
     public Button augment1Button, augment2Button, augment3Button;
     public TMP_Text augment1Text, augment2Text, augment3Text;
+    public Button continueButton;
+
     public class Augment {
         public string name;
         public string description;
@@ -26,7 +28,7 @@ public class AugmentManager : MonoBehaviour
 
     private List<Augment> allAugments;
     private List<Augment> currentAugments;
-    // Start is called before the first frame update
+   
     void Start()
     {
         allAugments = new List<Augment> {
@@ -34,7 +36,6 @@ public class AugmentManager : MonoBehaviour
             new Augment("Increase Rifle Damage", "Increases your rifle's attack damage.", () => rifleShootController.bulletDamage += 10),
             new Augment("Increase Speed", "Increases your movement speed.", () => characterMovement.moveSpeed += 1),
             new Augment("Increase Health", "Increases your max health.", () => characterMovement.maxHealth += 20),
-        
         };
     }
 
@@ -51,6 +52,7 @@ public class AugmentManager : MonoBehaviour
         augment1Text.text = currentAugments[0].name + "\n" + currentAugments[0].description;
         augment2Text.text = currentAugments[1].name + "\n" + currentAugments[1].description;
         augment3Text.text = currentAugments[2].name + "\n" + currentAugments[2].description;
+        continueButton.interactable = false;
         Debug.Log("End Wave");
     }
 
@@ -60,6 +62,7 @@ public class AugmentManager : MonoBehaviour
         augment2Button.gameObject.SetActive(false);
         augment3Button.gameObject.SetActive(false);
         Debug.Log("Selected Augment 1");
+        continueButton.interactable = true;
     }
 
     public void SelectAugment2 () {
@@ -68,6 +71,7 @@ public class AugmentManager : MonoBehaviour
         augment2Button.gameObject.SetActive(false);
         augment3Button.gameObject.SetActive(false);
         Debug.Log("Selected Augment 2");
+        continueButton.interactable = true;
     }
 
     public void SelectAugment3 () {
@@ -76,9 +80,9 @@ public class AugmentManager : MonoBehaviour
         augment2Button.gameObject.SetActive(false);
         augment3Button.gameObject.SetActive(false);
         Debug.Log("Selected Augment 3");
+        continueButton.interactable = true;
     }
 
-    // Update is called once per frame
     public void ApplyAugment(int index)
     {
         Debug.Log(shotgunShootController.bulletDamage);

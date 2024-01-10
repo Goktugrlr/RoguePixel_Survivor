@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8963056254801533163}
   - component: {fileID: 2107887844891412148}
   - component: {fileID: -6755935044736761654}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Evil Wizard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -33,8 +33,7 @@ Transform:
   m_LocalPosition: {x: 0.09941287, y: -0.07, z: 0}
   m_LocalScale: {x: 5.5, y: 6.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8613124987319791245}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4298091016523147739
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  attackPoint: {fileID: 8613124987319791245}
+  attackPoint: {fileID: 0}
   rb: {fileID: 2107887844891412148}
   animator: {fileID: 1437430259470778630}
   moveSpeed: 8
@@ -192,34 +191,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0.16781883, y: 0.027585948}
   m_Size: {x: 0.6848757, y: 0.8710402}
   m_Direction: 0
---- !u!1 &7170245980023820263
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8613124987319791245}
-  m_Layer: 0
-  m_Name: AttackPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8613124987319791245
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7170245980023820263}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.459, y: 0.058, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8401307094803783563}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

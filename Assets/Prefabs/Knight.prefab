@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1073275746161061941}
   - component: {fileID: 6553228425143508740}
   - component: {fileID: 3323059957571444378}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -33,8 +33,7 @@ Transform:
   m_LocalPosition: {x: 7.3416, y: 1.9325, z: 0}
   m_LocalScale: {x: 6.5, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3157871370731020130}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3849770588421326670
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  attackPoint: {fileID: 3157871370731020130}
+  attackPoint: {fileID: 0}
   rb: {fileID: 6553228425143508740}
   animator: {fileID: 7043505842681352645}
   moveSpeed: 8
@@ -192,34 +191,3 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0072562853, y: 0.052263483}
   m_Size: {x: 0.2944923, y: 0.4767533}
   m_Direction: 0
---- !u!1 &8686476690260034619
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3157871370731020130}
-  m_Layer: 0
-  m_Name: AttackPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3157871370731020130
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8686476690260034619}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.183, y: 0.12, z: -0.113945104}
-  m_LocalScale: {x: 0.16277222, y: 0.16317298, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6077047536777032455}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
