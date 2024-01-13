@@ -1027,6 +1027,8 @@ MonoBehaviour:
   healthText: {fileID: 898919475}
   maxHealth: 100
   waveManager: {fileID: 1330843865}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  transparency: 0.5
 --- !u!212 &275394149
 SpriteRenderer:
   m_ObjectHideFlags: 0

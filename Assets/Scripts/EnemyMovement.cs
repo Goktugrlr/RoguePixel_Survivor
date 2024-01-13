@@ -15,7 +15,6 @@ public class EnemyMovement : MonoBehaviour
     bool isAlive;
     public GameObject healthPotion;
 
-
     void Start()
     {
         isAlive = true;

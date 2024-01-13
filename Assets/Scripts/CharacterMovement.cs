@@ -13,13 +13,16 @@ public class CharacterMovement : MonoBehaviour
     private bool isDead = false;
     private bool isInvulnerable = false;
     private float invulnerableTime = -10.0f;
-
+    public Color originalColor;
+    public float transparency = 0.5f;
     
     private void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     void Update()
@@ -30,6 +33,8 @@ public class CharacterMovement : MonoBehaviour
         if (isInvulnerable && Time.time > invulnerableTime +10)
         {
             isInvulnerable = false;
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.color = originalColor;
         }
     }
 
@@ -38,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if(isDead==false){
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-            }
+        }
     }
 
 
@@ -95,6 +100,13 @@ public class CharacterMovement : MonoBehaviour
     public void MakeInvulnerable()
     {
         isInvulnerable = true;
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        Color currentColor = spriteRenderer.color;
+        currentColor.a = transparency;
+        spriteRenderer.color = currentColor;
+        
         invulnerableTime = Time.time;
     }
 }
