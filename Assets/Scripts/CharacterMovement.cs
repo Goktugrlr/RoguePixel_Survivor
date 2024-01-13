@@ -89,8 +89,6 @@ public class CharacterMovement : MonoBehaviour
                     currentHealth = maxHealth;
                     Destroy(other.gameObject);
                 }
-                
-        
         }
     }
 
