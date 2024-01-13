@@ -11,6 +11,8 @@ public class CharacterMovement : MonoBehaviour
     int currentHealth;
     public WaveManager waveManager;
     private bool isDead = false;
+    private bool isInvulnerable = false;
+    private float invulnerableTime = -10.0f;
 
     
     private void Start()
@@ -25,7 +27,10 @@ public class CharacterMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         healthText.text = "Health: " + currentHealth;
-
+        if (isInvulnerable && Time.time > invulnerableTime +10)
+        {
+            isInvulnerable = false;
+        }
     }
 
 
@@ -49,13 +54,15 @@ public class CharacterMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-
-        if(currentHealth <= 0)
+        if(isInvulnerable)
         {
-            currentHealth = 0;
-        } 
+            currentHealth -= damage;
 
+            if(currentHealth <= 0)
+            {
+                currentHealth = 0;
+            } 
+        }
 
     }
 
@@ -86,6 +93,14 @@ public class CharacterMovement : MonoBehaviour
         
         }
     }
+
+    public void MakeInvulnerable()
+    {
+        isInvulnerable = true;
+        invulnerableTime = Time.time;
+    }
+
+
 
 
 

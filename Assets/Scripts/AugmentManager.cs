@@ -36,6 +36,7 @@ public class AugmentManager : MonoBehaviour
             new Augment("Increase Rifle Damage", "Increases your rifle's attack damage.", () => rifleShootController.bulletDamage += 10),
             new Augment("Increase Speed", "Increases your movement speed.", () => characterMovement.moveSpeed += 1),
             new Augment("Increase Health", "Increases your max health.", () => characterMovement.maxHealth += 20),
+            new Augment("Invulnerability", "Makes you invulnerable for 10 seconds.", () => characterMovement.MakeInvulnerable()),
         };
     }
 
