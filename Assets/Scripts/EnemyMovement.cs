@@ -6,7 +6,6 @@ public class EnemyMovement : MonoBehaviour
     public float health = 100;
     private float currentHealth;
     private Transform player;
-    public Transform attackPoint;
     public Rigidbody2D rb;
     public Animator animator;
     private Vector2 movement;
@@ -102,6 +101,10 @@ public class EnemyMovement : MonoBehaviour
             {
                 Instantiate(healthPotion, transform.position, Quaternion.identity);
             }
+        }
+        else
+        {
+            animator.SetTrigger("isHit");
         }
     }
     private IEnumerator DestroyAfterAnimation(GameObject enemy)

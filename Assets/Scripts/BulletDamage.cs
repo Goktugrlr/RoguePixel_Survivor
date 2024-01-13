@@ -25,7 +25,6 @@ public class BulletDamage : MonoBehaviour
                 {
                     waveManager.EnemyDefeated();
                 }
-
             }
         }
     }

@@ -38,10 +38,9 @@ public class AugmentManager : MonoBehaviour
             new Augment("Increase Rifle Damage", "+10 Rifle Damage", () => rifleShootController.bulletDamage += 10),
             new Augment("Increase Rifle Damage", "+20% Rifle Damage", () => rifleShootController.bulletDamage = Mathf.RoundToInt(rifleShootController.bulletDamage * 1.2f)),
             new Augment("Increase Speed", "+1 Movement Speed", () => characterMovement.moveSpeed += 1),
-            new Augment("Increase Health", "+20 HP", () => characterMovement.maxHealth += 20),
-            new Augment("Increase Health", "+10% HP", () => characterMovement.maxHealth = Mathf.RoundToInt(characterMovement.maxHealth * 1.1f)),
+            new Augment("Increase Health", "+20 Max HP", () => characterMovement.maxHealth += 20),
+            new Augment("Increase Health", "+10% Max HP", () => characterMovement.maxHealth = Mathf.RoundToInt(characterMovement.maxHealth * 1.1f)),
             new Augment("Invulnerability", "Makes you invulnerable for 10 seconds.", () => characterMovement.MakeInvulnerable()),
-
             //new Augment("Decrease Enemy Health", "-5 Enemy Max HP" ,() => ),
         };
     }
