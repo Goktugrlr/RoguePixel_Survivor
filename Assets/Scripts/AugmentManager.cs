@@ -15,6 +15,7 @@ public class AugmentManager : MonoBehaviour
     public TMP_Text augment1Text, augment2Text, augment3Text;
     public Button continueButton;
 
+
     public class Augment {
         public string name;
         public string description;
@@ -32,19 +33,27 @@ public class AugmentManager : MonoBehaviour
     void Start()
     {
         allAugments = new List<Augment> {
-            new Augment("Increase Shotgun Damage", "Increases your shotgun's attack damage.", () => shotgunShootController.bulletDamage += 10),
-            new Augment("Increase Rifle Damage", "Increases your rifle's attack damage.", () => rifleShootController.bulletDamage += 10),
-            new Augment("Increase Speed", "Increases your movement speed.", () => characterMovement.moveSpeed += 1),
-            new Augment("Increase Health", "Increases your max health.", () => characterMovement.maxHealth += 20),
+            new Augment("Increase Shotgun Damage", "+10 Shotgun Damage", () => shotgunShootController.bulletDamage += 10),
+            new Augment("Increase Shotgun Damage", "+10% Shotgun Damage", () => shotgunShootController.bulletDamage = Mathf.RoundToInt(shotgunShootController.bulletDamage * 1.1f)),
+            new Augment("Increase Rifle Damage", "+10 Rifle Damage", () => rifleShootController.bulletDamage += 10),
+            new Augment("Increase Rifle Damage", "+20% Rifle Damage", () => rifleShootController.bulletDamage = Mathf.RoundToInt(rifleShootController.bulletDamage * 1.2f)),
+            new Augment("Increase Speed", "+1 Movement Speed", () => characterMovement.moveSpeed += 1),
+            new Augment("Increase Health", "+20 HP", () => characterMovement.maxHealth += 20),
+            new Augment("Increase Health", "+10% HP", () => characterMovement.maxHealth = Mathf.RoundToInt(characterMovement.maxHealth * 1.1f)),
             new Augment("Invulnerability", "Makes you invulnerable for 10 seconds.", () => characterMovement.MakeInvulnerable()),
+
+            //new Augment("Decrease Enemy Health", "-5 Enemy Max HP" ,() => ),
         };
     }
 
     public void EndWave () {
         currentAugments = new List<Augment>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3;) {
             Augment augment = allAugments[UnityEngine.Random.Range(0, allAugments.Count)];
-            currentAugments.Add(augment);
+            if (!currentAugments.Contains(augment)){
+                currentAugments.Add(augment);
+                i++;
+            }
             Debug.Log(i);
         }
         augment1Button.gameObject.SetActive(true);

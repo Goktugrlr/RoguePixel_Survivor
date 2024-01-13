@@ -54,7 +54,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(isInvulnerable)
+        if(!isInvulnerable)
         {
             currentHealth -= damage;
 
@@ -99,9 +99,4 @@ public class CharacterMovement : MonoBehaviour
         isInvulnerable = true;
         invulnerableTime = Time.time;
     }
-
-
-
-
-
 }
