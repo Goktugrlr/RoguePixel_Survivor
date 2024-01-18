@@ -77,6 +77,7 @@ public class WaveManager : MonoBehaviour
         waveNumberText.text = "Wave: " + waveNumber;
         continueButton.gameObject.SetActive(false);
         waveOverText.gameObject.SetActive(false);
+        menuButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
         StartSpawningEnemies();
     }
