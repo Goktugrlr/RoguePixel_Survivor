@@ -15,17 +15,18 @@ public class WaveManager : MonoBehaviour
     private List<EnemySpawner> activeSpawners = new List<EnemySpawner>(); 
     private int activeEnemies = 0;
     public TMP_Text waveOverText;   
-    public Button nextWaveButton;
     public TMP_Text waveDurationText;
     public TMP_Text waveNumberText;
     public TMP_Text totalKillCountText;
+    public Button restartButton;
+    public Button menuButton;
     public Button continueButton;
     public AugmentManager augmentManager;
     private bool waveEndStarted = false;
 
     void Start()
     {
-        nextWaveButton.onClick.AddListener(OnNextWaveButtonClicked);
+        continueButton.onClick.AddListener(OnNextWaveButtonClicked);
         StartWave();
     }
 
@@ -72,11 +73,11 @@ public class WaveManager : MonoBehaviour
         waveInProgress = true;
         waveTimer = waveDuration;
         waveNumber++;
-        waveDuration +=5;
+        waveDuration +=10;
         waveNumberText.text = "Wave: " + waveNumber;
-        nextWaveButton.gameObject.SetActive(false);
-        waveOverText.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
+        waveOverText.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
         StartSpawningEnemies();
     }
 
@@ -155,8 +156,9 @@ public class WaveManager : MonoBehaviour
     {
         
         waveOverText.text = "Wave " + waveNumber + " Completed!";
-        nextWaveButton.gameObject.SetActive(true);
+        continueButton.gameObject.SetActive(true);
         waveOverText.gameObject.SetActive(true);
+        menuButton.gameObject.SetActive(true);
     }
 
     public void HandlePlayerDeath()
@@ -166,11 +168,17 @@ public class WaveManager : MonoBehaviour
         DestroyAllEnemies();
         waveOverText.text = "You Died!";
         waveOverText.gameObject.SetActive(true);
-        continueButton.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        menuButton.gameObject.SetActive(true);
         waveInProgress = false;
     }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
