@@ -56,3 +56,7 @@ Umut Çakıcı -> https://github.com/iumutc
 ## Click the link below to watch the project description and gameplay video 
 
 👉 https://youtu.be/RqCGnR8_dtE
+
+## Download Link
+
+👉 https://goktugrlr.itch.io/roguepixelsurvivor
